@@ -1,6 +1,6 @@
 module github.com/Oleksandrxxx/invoicer-chapter2
 
-go 1.26.5
+go 1.20
 
 require (
 	github.com/gorilla/mux v1.8.1
