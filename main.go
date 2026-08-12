@@ -53,7 +53,7 @@ func main() {
 		))
 	} else {
 		log.Println("Opening sqlite connection")
-		db, err = gorm.Open("sqlite3", "invoicer.db")
+	db, err = gorm.Open("sqlite3", "invoicer.db")
 	}
 	if err != nil {
 		panic("failed to connect database")
@@ -119,7 +119,7 @@ func (iv *invoicer) getInvoice(w http.ResponseWriter, r *http.Request) {
 	iv.db.Where("invoice_id = ?", i1.ID).Find(&i1.Charges)
 	jsonInvoice, err := json.Marshal(i1)
 	if err != nil {
-		httpError(w, r, http.StatusInternalServerError, "failed to retrieve invoice id %d: %s", vars["id"], err)
+		httpError(w, r, http.StatusInternalServerError, "failed to retrieve invoice id %s: %s", vars["id"], err)
 		return
 	}
 	w.Header().Add("Content-Type", "application/json")
